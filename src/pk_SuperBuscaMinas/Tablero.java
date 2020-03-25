@@ -180,6 +180,12 @@ public class Tablero {
 		
 		// ----------------- CREACION DE MINAS -----------------
 		// Genero aleatoriamente numMinas minas
+		plantaMinas(NUM_MINAS);		
+		// ----------------- CREACION DE MINAS -----------------
+	}
+
+
+	private void plantaMinas(int nUM_MINAS2) {
 		int contador_minas = NUM_MINAS;
 		int filaMina;
 		int columnaMina;
@@ -215,8 +221,7 @@ public class Tablero {
 					botonesNoMinaSinPulsar++;
 				}
 			}
-		}		
-		// ----------------- CREACION DE MINAS -----------------
+		}
 	}		
 	
 	
@@ -435,18 +440,5 @@ public class Tablero {
 		}
 				
 		return numMinas;
-	}
-
-	/**
-	 * Método que imprime una matriz por pantalla
-	 */
-	public void imprimeMatrizBotones(BotonMina[][] matrizBotones) {
-		// TODO
-        for(int i = 0 ; i < matrizBotones.length; i++) {
-            for(int j = 0; j < matrizBotones.length; j++){
-                System.out.println(matrizBotones[j][i].getValor() + " ");
-            }
-            System.out.println("\n");
-        }
 	}		
 }
