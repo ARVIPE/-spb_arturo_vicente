@@ -406,43 +406,64 @@ public class Tablero {
 		// Celda Superior izq
 		if ((fil>0 && col>0) && matrizBotones[fil-1][col-1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil-1, col-1);
 		}
 		
 		// Celda Superior
 		if ((fil>0)	&& matrizBotones[fil-1][col].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil-1, col+1);
 		}		
 		
 		// Celda Superior der
 		if ((fil>0 && col<matrizBotones.length-1) && matrizBotones[fil-1][col+1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil-1, col+1);
 		}	
 		
 		// Celda Izq
 		if ((col>0)	&& matrizBotones[fil][col-1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil-1, col-1);
 		}	
 		
 		// Celda Der
 		if ((col<matrizBotones.length-1) && matrizBotones[fil][col+1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil, col+1);
 		}	
 		
 		// Celda Inferior der
 		if ((fil<matrizBotones.length-1 && col<matrizBotones.length-1) && matrizBotones[fil+1][col+1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil+1, col+1);
 		}	
 		
 		// Celda Inferior
 		if ((fil<matrizBotones.length-1) && matrizBotones[fil+1][col].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil+1, col);
 		}	
 		
 		// Celda Inferior izq
 		if ((fil<matrizBotones.length-1 && col>0) && matrizBotones[fil+1][col-1].getValor().equals(BotonMina.Valor.MINA)) {
 			numMinas++;
+			destapaBoton(fil+1, col-1);
 		}
 				
 		return numMinas;
-	}		
+	}	
+	
+	private void destapaBoton(int fil, int col) {
+		//Si es valor NUMERO cambia aspecto a NUMERO
+		if(matrizBotones[fil][col].getValor().equals(BotonMina.Valor.NUMERO)) {
+			matrizBotones[fil][col].cambiarAspecto(BotonMina.Estado.NUMERO);
+			botonesNoMinaSinPulsar--;
+		}
+		// Si es valor VACIO cambia aspecto a PULSADO
+		else if (matrizBotones[fil][col].getValor().equals(BotonMina.Valor.VACIO)) {
+			matrizBotones[fil][col].cambiarAspecto(BotonMina.Estado.PULSADO);
+			recursivoDestapaCeldasAdyacentes(fil, col);
+		}
+	}
 }
