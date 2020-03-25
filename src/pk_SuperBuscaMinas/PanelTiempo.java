@@ -26,6 +26,7 @@ public class PanelTiempo extends JPanel {
         }
     }
     
+    // Constructor para panel Tiempo
     public PanelTiempo() {
     	lblTiempo.setIcon(new ImageIcon("res/cronometro_38.png"));
     	lblContadorSegundos.setFont(new Font(lblContadorSegundos.getFont().getName(), Font.BOLD, 18));

@@ -97,7 +97,9 @@ public class Tablero {
 		panelContadorMinas.setBounds(coordX + (CELDA_SIZE * MATRIZ_SIZE) - panelContadorMinas.getWidth(), coordY + 10, panelContadorMinas.getWidth(), panelContadorMinas.getHeight());
 		panelBuscaMinas.add(panelContadorMinas);
 		panelBuscaMinas.setBounds(40, 10, CELDA_SIZE * MATRIZ_SIZE + 20, CELDA_SIZE * MATRIZ_SIZE + 100);
-				
+		
+		//Llamamos al método para imprimir Matriz Botones
+//		imprimeMatrizBotones(matrizBotones);
 		return panelBuscaMinas;
 	}
 	
@@ -109,7 +111,6 @@ public class Tablero {
 	 */
 	private void inicializaMatrizBotones(int size) {
 		matrizBotones = new BotonMina[size][size];
-		
 		for (int fil=0; fil<matrizBotones.length; fil++) {
 			for (int col=0; col<matrizBotones.length; col++) {
 				matrizBotones[fil][col] = new BotonMina(fil, col);
@@ -173,7 +174,7 @@ public class Tablero {
 					public void mouseEntered(MouseEvent e) {}
 					@Override
 					public void mouseClicked(MouseEvent e) {}
-				});				
+				});	
 			}
 		}
 		
@@ -440,7 +441,12 @@ public class Tablero {
 	 * MÃ©todo que imprime una matriz por pantalla
 	 */
 	public void imprimeMatrizBotones(BotonMina[][] matrizBotones) {
-// TODO
-
+		// TODO
+        for(int i = 0 ; i < matrizBotones.length; i++) {
+            for(int j = 0; j < matrizBotones.length; j++){
+                System.out.println(matrizBotones[j][i].getValor() + " ");
+            }
+            System.out.println("\n");
+        }
 	}		
 }
