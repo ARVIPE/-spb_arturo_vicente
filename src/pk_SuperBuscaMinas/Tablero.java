@@ -232,19 +232,21 @@ public class Tablero {
 			muestraMinas();
 			
 			panelTiempo.detener();
+			mensajeFinJuego("La  mina explota", "Fin del juego");
 			
-			JOptionPane.showMessageDialog(null, "La mina explotó!!", "Fin del juego", JOptionPane.DEFAULT_OPTION);
-			System.exit(0);
 		}
 		else if (botonesNoMinaSinPulsar <= 0) {	// FIN DEL JUEGO: HA GANADO
 			ejecutar_sonido("res/aplausos.wav");
 			
-			panelTiempo.detener();
+			mensajeFinJuego("Gana la partida", "Fin del juego");
 			
-			JOptionPane.showMessageDialog(null, "Ganó la partida!!\nHa tardado: " + panelTiempo.getSegundos() + " segundos", "Fin del juego", JOptionPane.DEFAULT_OPTION);
-			System.exit(0);
 		}
 	}	
+	
+	private void mensajeFinJuego(String msg1, String msg2) {
+		JOptionPane.showMessageDialog(null, "La mina explotó!!", "Fin del juego", JOptionPane.DEFAULT_OPTION);
+		System.exit(0);
+	}
 	
 	
 	/**
